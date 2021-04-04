@@ -15,6 +15,7 @@ TITML-IDN Dataset by Speech Resources Consortium, National Institute of Informat
 _HOMEPAGE = "http://research.nii.ac.jp/src/en/TITML-IDN.html"
 _LICENSE = "For research purpose only"
 
+CORRUPTED_FILE_NAMES = ["m05-260_x.wav"]
 
 class TITMLIDNConfig(datasets.BuilderConfig):
     """BuilderConfig for TITML-IDN."""
@@ -85,7 +86,7 @@ class TITMLIDN(datasets.GeneratorBasedBuilder):
         transcript = self._load_transcript(transcript_file)
 
         for _id, file in enumerate(os.listdir(speech_dir)):
-            if file.endswith(".wav"):
+            if file.endswith(".wav") and file not in CORRUPTED_FILE_NAMES:
                 wav_path = f"{speech_dir}/{file}"
 
                 # Get transcript
