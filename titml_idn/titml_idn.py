@@ -37,9 +37,9 @@ class TITMLIDN(datasets.GeneratorBasedBuilder):
         return datasets.DatasetInfo(
             description=_DESCRIPTION,
             features=datasets.Features(
-                {"file": datasets.Value("string"), "text": datasets.Value("string")}
+                {"path": datasets.Value("string"), "sentence": datasets.Value("string")}
             ),
-            supervised_keys=("file", "text"),
+            supervised_keys=("path", "sentence"),
             homepage=_HOMEPAGE,
             citation=_CITATION,
         )
@@ -92,6 +92,6 @@ class TITMLIDN(datasets.GeneratorBasedBuilder):
                 sound_no = file.split("-")[1].replace(".wav", "").replace("_x", "")
                 label = transcript[sound_no].rstrip("\n")
 
-            example = {"file": wav_path, "text": label}
+            example = {"path": wav_path, "sentence": label}
 
             yield str(_id), example
