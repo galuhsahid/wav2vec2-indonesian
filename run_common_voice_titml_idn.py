@@ -439,12 +439,11 @@ def main():
     if data_args.max_val_samples is not None:
         eval_dataset = eval_dataset.select(range(data_args.max_val_samples))
 
-    resampler = torchaudio.transforms.Resample(48_000, 16_000)
-
     # Preprocessing the datasets.
     # We need to read the aduio files as arrays and tokenize the targets.
     def speech_file_to_array_fn(batch):
         speech_array, sampling_rate = torchaudio.load(batch["path"])
+        resampler = torchaudio.transforms.Resample(sampling_rate, 16_000)
         batch["speech"] = resampler(speech_array).squeeze().numpy()
         batch["sampling_rate"] = 16_000
         batch["target_text"] = batch["text"]
