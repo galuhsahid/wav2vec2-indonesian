@@ -15,7 +15,7 @@ TITML-IDN Dataset by Speech Resources Consortium, National Institute of Informat
 _HOMEPAGE = "http://research.nii.ac.jp/src/en/TITML-IDN.html"
 _LICENSE = "For research purpose only"
 
-CORRUPTED_FILE_NAMES = ["m05-260_x.wav"]
+CORRUPTED_FILE_NAMES = ["m05-260_x.wav", "f07-300.wav", "f07-324.wav", "f07-307.wav"]
 
 class TITMLIDNConfig(datasets.BuilderConfig):
     """BuilderConfig for TITML-IDN."""
