@@ -45,15 +45,6 @@ class TITMLIDN(datasets.GeneratorBasedBuilder):
             citation=_CITATION,
         )
 
-        return datasets.DatasetInfo(
-            description=_DESCRIPTION,
-            features=features,
-            supervised_keys=None,
-            homepage=_HOMEPAGE,
-            license=_LICENSE,
-            citation=_CITATION,
-        )
-
     def _split_generators(self, dl_manager):
         self.archive_path = "titml_idn/data"
         return [
